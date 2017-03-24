@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<head>
+<title>Wikipedia Viewer</title>
+<link href="css/style.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	  rel="stylesheet">
+</head>
+
+<html>
+<body>
+	<h1>Wikipedia Viewer</h1>	
+	
+		<div class="text-field-container">
+			<input id="search-tf" onkeydown="enterPressed(event, this)" placeholder="Click here to search!" name="search">
+			<i id="search-icon" class="material-icons">search</i>
+		</div>
+		<button>Random Article</button>
+	
+
+	<div class="entries-container">
+
+		<div class="entry-container">
+			<h2 class="title-entry">Title</h2>
+			<p class="para-entry">Search result</p>
+		</div>
+
+		<div class="entry-container">
+			<h2 class="title-entry">Title</h2>
+			<p class="para-entry">Search result</p>
+		</div>	
+
+		<div class="entry-container">
+			<h2 class="title-entry">Title</h2>
+			<p class="para-entry">Search result</p>
+		</div>	
+
+		<div class="entry-container">
+			<h2 class="title-entry">Title</h2>
+			<p class="para-entry">Search result</p>
+		</div>	
+
+		<div class="entry-container">
+			<h2 class="title-entry">Title</h2>
+			<p class="para-entry">Search result</p>
+		</div>	
+
+		<div class="entry-container">
+			<h2 class="title-entry">Title</h2>
+			<p class="para-entry">Search result</p>
+		</div>	
+
+		<div class="entry-container">
+			<h2 class="title-entry">Title</h2>
+			<p class="para-entry">Search result</p>
+		</div>	
+
+		<div class="entry-container">
+			<h2 class="title-entry">Title</h2>
+			<p class="para-entry">Search result</p>
+		</div>	
+
+
+		<div class="entry-container">
+			<h2 class="title-entry">Title</h2>
+			<p class="para-entry">Search result</p>
+		</div>	
+
+		<div class="entry-container">
+			<h2 class="title-entry">Title</h2>
+			<p class="para-entry">Search result</p>
+		</div>		
+
+	</div>
+
+
+
+</body>
+
+<script>
+	var searchTxtField = document.getElementById("search-tf");
+
+
+	function enterPressed(e, input) {
+		var kCode = e.keyCode;
+
+		if (kCode == 13) {
+			console.log("text is: " + searchTxtField.value);
+			var rdyString = "";
+			var len = searchTxtField.value.length;
+			var queryString = searchTxtField.value;
+			for (var i = 0; i < len; i++) {
+				if (queryString[i] === " ") {
+					rdyString += "%20";
+				}
+				else {
+					rdyString += queryString[i];
+				}
+
+			}
+
+			getWiki();
+		}
+
+		function getWiki() {
+			var xhr = new XMLHttpRequest();
+			xhr.open("GET", 'https://en.wikipedia.org/w/api.php? format=json&action=query&generator=search&gsrnamespace=0&gsrsearch=' + rdyString + '&gsrlimit=10&prop=extracts&exintro&explaintext&exsentences=1&exlimit=max&origin=*', true);
+			xhr.send();
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState === 4 && xhr.status === 200) {
+					var data = JSON.parse(xhr.responseText);
+
+					showEntries(data);
+				}
+			}
+		}
+
+	}
+
+	function showEntries(data) {
+
+		console.log("data is: " + data);
+		var pages = data["query"]["pages"];
+		var pagesKeys = Object.keys(data["query"]["pages"]);
+		console.log("data keys are: " + Object.keys(pagesKeys));
+
+		var titleEntries = document.getElementsByClassName("title-entry");
+		var parEntries = document.getElementsByClassName("para-entry");
+
+		for (var i = 0; i < titleEntries.length; i++) {
+			var titleEntry = titleEntries.item(i);
+			var paraEntry = parEntries.item(i);
+			var pageNum = pagesKeys[i];
+			console.log("titleEntry is: " + titleEntry);
+			console.log("paraEntry is: " + paraEntry);
+			console.log("key is: " + pageNum);
+
+			var page = pages[pageNum];
+			var pageTitle = page["title"];
+			var pageExtract = page["extract"];
+			titleEntry.innerHTML = pageTitle;
+			paraEntry.innerHTML = pageExtract;
+
+		}
+
+	}	
+
+
+</script>
+
+</html>
