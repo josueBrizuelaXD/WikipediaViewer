@@ -10,7 +10,7 @@
 <body>
 	<h1>Wikipedia Viewer</h1>	
 	
-		<button class="tooltip">?<span class="tooltiptext">Random Entry</span></button> <br>
+		<button class="tooltip" onclick="randomBtnPressed(this)">?<span class="tooltiptext">Random Entry</span></button> <br>
 	<div>
 	<input type="text" id="search-tf" onkeydown="enterPressed(event, this)" placeholder="Click here to search!" name="search">
 			<i id="search-icon" class="material-icons">search</i>
@@ -160,6 +160,10 @@
 		window.open("https://en.wikipedia.org/wiki/" + entryHeader.innerHTML);
 
 
+	}
+	
+	function randomBtnPressed(id) {
+		window.open("https://en.wikipedia.org/wiki/Special:Random");
 	}
 
 
