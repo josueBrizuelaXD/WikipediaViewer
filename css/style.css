@@ -92,14 +92,18 @@ button:hover {
 }
 
 input[type=text]:focus {
-	width: 86%;
+	width: 80%;
+	
 }
 
 
+.search-container {
+	position: relative;
+}
 
 input[type=text] {
 	display: inline-block;
-	position: relative;
+	position: absolute;
 	text-align: center;
 	left: 50%;
 	transform: translate(-50%,0);
@@ -115,14 +119,15 @@ input[type=text] {
 }
 
 #search-icon {
-	position: relative;
+	position: absolute;
 	display: inline-block;
 	padding: 0px;
 	margin: 0px;
-	top: 12px;
-	left: 75px;
+	top: 5px;
+	left: 33%;
 	font-size: 36px;
 	text-shadow: 0px 1px 3px black;
+	transition: 1s ease-in-out;
 }
 
 

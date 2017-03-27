@@ -10,14 +10,18 @@
 <body>
 	<h1>Wikipedia Viewer</h1>	
 	
-		<button class="tooltip" onclick="randomBtnPressed(this)">?<span class="tooltiptext">Random Entry</span></button> <br>
-	<div>
+		<button class="tooltip" onclick="randomBtnPressed(this)">?<span class="tooltiptext">Random Entry</span></button> 
+	<br>
+	
+	<div class="search-container">
 	<input type="text" id="search-tf" onkeydown="enterPressed(event, this)" placeholder="Click here to search!" name="search">
-			<i id="search-icon" class="material-icons">search</i>
+		
+	<i id="search-icon" class="material-icons">search</i>
 	
 	</div>
 			
-	<br>
+<br>
+<br>	
 		
 		
 	
@@ -82,8 +86,19 @@
 </body>
 
 <script>
+	var searchIcon = document.getElementById("search-icon");
 	var searchTxtField = document.getElementById("search-tf");
-
+	
+	
+	searchTxtField.onfocus = function() {
+		searchIcon.style.left = "83%";
+	};
+	
+	searchTxtField.onblur = function() {
+		searchIcon.style.left = "33%";
+	};
+	
+	
 
 	function enterPressed(e, input) {
 		var kCode = e.keyCode;
