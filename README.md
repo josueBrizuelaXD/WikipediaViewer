@@ -1,1 +1,1 @@
-###Webpage that searches for wikipedia entries with a simple to use interface.
+Webpage that searches for wikipedia entries with a simple to use interface.
