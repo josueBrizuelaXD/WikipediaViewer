@@ -1,6 +1,6 @@
 body {
 	background-color: #6A9E3F;
-	color: #FFFFFF;
+	color: black;
 	padding: 0px;
 	margin: 0px;
 }
@@ -8,33 +8,82 @@ body {
 h1 {
 	font-size: 50px;
 	text-align: center;
+	text-shadow: 0px 2px 3px black;
+	
+}
+
+button {
+	background: #FC4482;
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	border: none;
+	font-size: 20px;
+	color: white;
+	margin: 0px 10px;
+	position: absolute;
+	top: 45px;
+	cursor: pointer;
+	box-shadow: 0px 1px 6px black;
+	transition: 0.2s ease-in;
+	
+}
+
+button:hover {
+	width: 43px;
+	height: 43px;
+	box-shadow: 0px 1px 10px black;
 }
 
 .entries-container {
-	margin: 0px;
+	margin: 30px 0px;
 	padding: 0px;
 	text-align: center;
 }
 
 .entry-container {
 	background: #8CC152;
-	margin: 10px auto;
+	margin: 20px auto;
 	padding: 10px 10px;
 	width: 90%;
 	border-radius: 15px;
 	cursor: pointer;
+	box-shadow: 0px 1px 2px black;
+	visibility: hidden;
+	opacity: 0;
+	transition: 1s ease-out;
+	-webkit-transition: 1s ease-out;
+	text-decoration: none;
+}
+
+.show {
+	visibility: visible;
+	opacity: 1;
+	
+}
+
+.entry-container:hover {
+	width: 91%;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	box-shadow: 0px 0px 10px black;
+	transition: 0.2s ease-in-out;
 }
 
 .entry-container > h2 {
-	color: #212121;
+	font-size: 30px;
 	padding: 0px;
 	margin: 0px;
+	
 }
 
 .entry-container > p {
 	color: #757575;
 	padding: 0px;
 	margin: 0px;
+	font-size: 20px;
+	text-align: justify;
+	
 }
 
 .text-field-container {
@@ -42,27 +91,80 @@ h1 {
 	padding: 0px;
 }
 
-.input:focus {
-	width: 80%;
+input[type=text]:focus {
+	width: 86%;
 }
 
-#search-tf {
 
+
+input[type=text] {
+	display: inline-block;
+	position: relative;
+	text-align: center;
+	left: 50%;
+	transform: translate(-50%,0);
+	width: 25%;
+    box-sizing: border-box;
 	border-radius: 10px;
-	margin: 10px 40px;
 	padding: 10px 10px;
 	font-size: 20px;
 	border: none;
 	-webkit-transition: width 1s ease-in-out;
-	transition: width 1s ease-in-out;
+    transition: width 1s ease-in-out;
+	box-shadow: 0px 1px 3px black;
 }
 
 #search-icon {
 	position: relative;
-	display: inline;
+	display: inline-block;
 	padding: 0px;
 	margin: 0px;
-	top: 18px;
-	left: -38px;
-	font-size: 48px;
+	top: 12px;
+	left: 75px;
+	font-size: 36px;
+	text-shadow: 0px 1px 3px black;
+}
+
+
+
+
+/* Tooltip text */
+ .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+	font-size: 15px;
+
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    bottom: -100%;
+    left: 150%;
+    margin-left: -60px;
+
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+/* Tooltip arrow */
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
 }

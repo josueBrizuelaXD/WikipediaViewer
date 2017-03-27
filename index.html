@@ -10,65 +10,70 @@
 <body>
 	<h1>Wikipedia Viewer</h1>	
 	
-		<div class="text-field-container">
-			<input id="search-tf" onkeydown="enterPressed(event, this)" placeholder="Click here to search!" name="search">
+		<button class="tooltip">?<span class="tooltiptext">Random Entry</span></button> <br>
+	<div>
+	<input type="text" id="search-tf" onkeydown="enterPressed(event, this)" placeholder="Click here to search!" name="search">
 			<i id="search-icon" class="material-icons">search</i>
-		</div>
-		<button>Random Article</button>
+	
+	</div>
+			
+	<br>
+		
+		
 	
 
 	<div class="entries-container">
 
-		<div class="entry-container">
-			<h2 class="title-entry">Title</h2>
-			<p class="para-entry">Search result</p>
+		<div class="entry-container" onclick="entryPressed(this)">
+			<h2 class="title-entry"></h2>
+			<p class="para-entry"></p>
+		</div>
+		
+			<div class="entry-container" onclick="entryPressed(this)">
+			<h2 class="title-entry"></h2>
+			<p class="para-entry"></p>
 		</div>
 
-		<div class="entry-container">
-			<h2 class="title-entry">Title</h2>
-			<p class="para-entry">Search result</p>
-		</div>	
+			<div class="entry-container" onclick="entryPressed(this)">
+			<h2 class="title-entry"></h2>
+			<p class="para-entry"></p>
+		</div>
 
-		<div class="entry-container">
-			<h2 class="title-entry">Title</h2>
-			<p class="para-entry">Search result</p>
-		</div>	
+			<div class="entry-container" onclick="entryPressed(this)">
+			<h2 class="title-entry"></h2>
+			<p class="para-entry"></p>
+		</div>
 
-		<div class="entry-container">
-			<h2 class="title-entry">Title</h2>
-			<p class="para-entry">Search result</p>
-		</div>	
+			<div class="entry-container" onclick="entryPressed(this)">
+			<h2 class="title-entry"></h2>
+			<p class="para-entry"></p>
+		</div>
 
-		<div class="entry-container">
-			<h2 class="title-entry">Title</h2>
-			<p class="para-entry">Search result</p>
-		</div>	
+			<div class="entry-container" onclick="entryPressed(this)">
+			<h2 class="title-entry"></h2>
+			<p class="para-entry"></p>
+		</div>
 
-		<div class="entry-container">
-			<h2 class="title-entry">Title</h2>
-			<p class="para-entry">Search result</p>
-		</div>	
+			<div class="entry-container" onclick="entryPressed(this)">
+			<h2 class="title-entry"></h2>
+			<p class="para-entry"></p>
+		</div>
 
-		<div class="entry-container">
-			<h2 class="title-entry">Title</h2>
-			<p class="para-entry">Search result</p>
-		</div>	
+			<div class="entry-container" onclick="entryPressed(this)">
+			<h2 class="title-entry"></h2>
+			<p class="para-entry"></p>
+		</div>
 
-		<div class="entry-container">
-			<h2 class="title-entry">Title</h2>
-			<p class="para-entry">Search result</p>
-		</div>	
+			<div class="entry-container" onclick="entryPressed(this)">
+			<h2 class="title-entry"></h2>
+			<p class="para-entry"></p>
+		</div>
 
+			<div class="entry-container" onclick="entryPressed(this)">
+			<h2 class="title-entry"></h2>
+			<p class="para-entry"></p>
+		</div>
 
-		<div class="entry-container">
-			<h2 class="title-entry">Title</h2>
-			<p class="para-entry">Search result</p>
-		</div>	
-
-		<div class="entry-container">
-			<h2 class="title-entry">Title</h2>
-			<p class="para-entry">Search result</p>
-		</div>		
 
 	</div>
 
@@ -125,11 +130,15 @@
 
 		var titleEntries = document.getElementsByClassName("title-entry");
 		var parEntries = document.getElementsByClassName("para-entry");
+		var entrycontainers = document.getElementsByClassName("entry-container");
 
 		for (var i = 0; i < titleEntries.length; i++) {
 			var titleEntry = titleEntries.item(i);
 			var paraEntry = parEntries.item(i);
 			var pageNum = pagesKeys[i];
+			var  entryCon = entrycontainers[i];
+			entryCon.setAttribute("class", "entry-container show");
+			
 			console.log("titleEntry is: " + titleEntry);
 			console.log("paraEntry is: " + paraEntry);
 			console.log("key is: " + pageNum);
@@ -142,7 +151,16 @@
 
 		}
 
-	}	
+	}
+	
+	function entryPressed(id) {
+		console.log("id is :" + id);
+		var entryHeader = id.children[0];
+		console.log("value of header:" + entryHeader.innerHTML);
+		window.open("https://en.wikipedia.org/wiki/" + entryHeader.innerHTML);
+
+
+	}
 
 
 </script>
